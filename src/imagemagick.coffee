@@ -55,21 +55,13 @@ class ImageMagick
     # No need - ImageMagick defaults to Mitchell or Lanczos, where appropriate.
     # downsampling ||= "Lanczos"
     
-    command = "
-      composite
-      -geometry #{ image.width }x#{ image.height }+#{ image.cssx }+#{ image.cssy }
-      "
+    command = "composite -geometry #{ image.width }x#{ image.height }+#{ image.cssx }+#{ image.cssy } "
     
     if downsampling
-      command += "-filter #{ downsampling }"
+      command += " -filter #{ downsampling } "
       
     movecmd = if process.platform != "win32" then "mv" else "move"  
-    command += "
-      #{ image.path } #{ filepath } #{ filepath }.tmp
-      
-      &&
-      #{ movecmd } #{ filepath }.tmp #{ filepath }
-    "
+    command += " #{ image.path } #{ filepath } #{ filepath }.tmp && #{ movecmd } #{ filepath }.tmp #{ filepath }"
   
     exec command, ( error, stdout, stderr ) ->
       if error or stderr
