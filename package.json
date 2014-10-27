@@ -3,12 +3,12 @@
     "description": "Sprite sheet generator for node.js",
     "version": "0.4.2",
     "author": {
-        "name": "Richard Butler",
-        "email": "rich@aspectvision.com"
+        "name": "Kuba Holuj",
+        "email": "kubah@porch.com"
     },
     "repository": {
         "type": "git",
-        "url": "http://github.com/richardbutler/node-spritesheet.git"
+        "url": "http://github.com/kubah-porch/node-spritesheet.git"
     },
 	"scripts": {
 		"install": "coffee --compile --output ./lib ./src"
